@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京都賞櫻慢活十日遊 (2026)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: #fdf2f8; } /* Light pink background for Sakura vibe */
+        .sakura-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fbcfe8' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="sakura-bg">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const itineraryData = [
+            {
+                day: 1,
+                date: "2026/3/29 (日)",
+                title: "抵達京都 - 養精蓄銳",
+                theme: "輕鬆抵達",
+                description: "搭乘虎航晚班機抵達關西機場，直接前往京都車站飯店休息，為明日的櫻花之旅做準備。",
+                spots: [
+                    {
+                        name: "關西國際機場 (KIX)",
+                        desc: "抵達後，建議搭乘 HARUKA 特急列車直達京都車站（約75分鐘）。",
+                        photo: "機場入境大廳或 HARUKA 列車",
+                        food: "機場便利商店飯糰或三明治 (晚班機簡單吃)",
+                        type: "transport"
+                    },
+                    {
+                        name: "京都車站",
+                        desc: "抵達京都的門戶。欣賞現代化的車站建築與京都塔夜景。",
+                        photo: "京都塔夜景、大階梯",
+                        food: "車站內 'Porta' 地下街或伊勢丹百貨美食街",
+                        type: "checkin"
+                    }
+                ],
+                mapLink: "https://www.google.com/maps/dir/Kansai+International+Airport/Kyoto+Station/"
+            },
+            {
+                day: 2,
+                date: "2026/3/30 (一)",
+                title: "洛東經典 - 清水寺與枝垂櫻",
+                theme: "古都風情",
+                description: "利用計程車避開上坡，從清水寺一路漫步向下，欣賞最具代表性的京都櫻花。",
+                spots: [
+                    {
+                        name: "清水寺 (Kiyomizu-dera)",
+                        desc: "為何來此：世界遺產，京都必訪。櫻花包圍的清水舞台最為壯觀。歷史：建於778年，供奉千手觀音，懸造式建築未用一根釘子。",
+                        photo: "奧之院拍攝清水舞台全景",
+                        food: "沿途湯豆腐料理",
+                        type: "sight"
+                    },
+                    {
+                        name: "三年坂 & 二年坂",
+                        desc: "為何來此：保留江戶時代風貌的石板路，兩旁盡是傳統町家。",
+                        photo: "八坂塔背景的街道照",
+                        food: "藤菜美 (醬油糰子、蕨餅)、阿古屋茶屋 (漬物吃到飽)",
+                        type: "walk"
+                    },
+                    {
+                        name: "圓山公園 (Maruyama Park)",
+                        desc: "為何來此：京都賞櫻名所，有一棵巨大的「祇園枝垂櫻」。",
+                        photo: "巨大枝垂櫻樹下",
+                        food: "公園內花見屋台 (小吃攤)",
+                        type: "sight"
+                    }
+                ],
+                routeNote: "建議直接搭計程車到清水寺『仁王門』附近下車，一路『往下走』，節省體力。",
+                mapLink: "https://www.google.com/maps/dir/Kyoto+Station/Kiyomizu-dera/Sannenzaka/Maruyama+Park/"
+            },
+            {
+                day: 3,
+                date: "2026/3/31 (二)",
+                title: "哲學之道 - 櫻花隧道漫步",
+                theme: "詩意賞櫻",
+                description: "京都最浪漫的櫻花散步道，沿著水渠綿延不絕的櫻花。",
+                spots: [
+                    {
+                        name: "蹴上傾斜鐵道 (Keage Incline)",
+                        desc: "為何來此：廢棄鐵道兩旁種滿櫻花，非常有電影感。",
+                        photo: "鐵軌中央，由下往上拍櫻花",
+                        food: "Blue Bottle Coffee (在附近的百年町家改建)",
+                        type: "sight"
+                    },
+                    {
+                        name: "南禪寺 (Nanzen-ji)",
+                        desc: "為何來此：欣賞古羅馬風格的紅磚水路閣，與日式寺院的強烈對比。",
+                        photo: "水路閣拱門下",
+                        food: "順正湯豆腐 (百年老店，環境優美)",
+                        type: "sight"
+                    },
+                    {
+                        name: "哲學之道 (Philosopher's Path)",
+                        desc: "為何來此：沿著琵琶湖疏水渠的櫻花隧道，極美。建議只走南段精華區，不必走全程。",
+                        photo: "小橋流水配櫻花",
+                        food: "Yojiya Café (藝妓臉咖啡)",
+                        type: "walk"
+                    }
+                ],
+                routeNote: "搭地鐵到蹴上站開始，行程結束後若疲累可直接搭計程車回飯店。",
+                mapLink: "https://www.google.com/maps/dir/Kyoto+Station/Keage+Incline/Nanzen-ji/Philosopher's+Path/"
+            },
+            {
+                day: 4,
+                date: "2026/4/1 (三)",
+                title: "嵐山 - 竹林與山水",
+                theme: "山林雅緻",
+                description: "前往京都郊區嵐山，搭乘小火車或漫步渡月橋，感受山水之美。",
+                spots: [
+                    {
+                        name: "嵐山 渡月橋",
+                        desc: "為何來此：嵐山的地標，橫跨桂川，背景是櫻花點綴的山景。",
+                        photo: "站在河岸邊，以橋和山為背景",
+                        food: "Arabica 咖啡 (網紅店)、中村屋可樂餅",
+                        type: "sight"
+                    },
+                    {
+                        name: "天龍寺 (Tenryu-ji)",
+                        desc: "為何來此：曹源池庭園是借景嵐山的傑作，世界遺產。",
+                        photo: "曹源池庭園倒影",
+                        food: "寺內「篩月」精進料理 (素食)",
+                        type: "sight"
+                    },
+                    {
+                        name: "嵐山竹林小徑",
+                        desc: "為何來此：高聳入雲的竹林，幽靜清涼。",
+                        photo: "竹林仰拍",
+                        food: "三忠豆腐、廣川鰻魚飯 (需預約)",
+                        type: "walk"
+                    }
+                ],
+                routeNote: "建議搭乘JR嵯峨野線到「嵯峨嵐山站」。若想搭小火車，需提前一個月預訂。",
+                mapLink: "https://www.google.com/maps/dir/Kyoto+Station/Togetsukyo+Bridge/Tenryu-ji/Arashiyama+Bamboo+Grove/"
+            },
+            {
+                day: 5,
+                date: "2026/4/2 (四)",
+                title: "海之京都 - 天橋立與伊根舟屋",
+                theme: "絕景一日遊",
+                description: "參加 KKday 一日遊行程，專車接送，輕鬆遊覽日本三景之一。",
+                spots: [
+                    {
+                        name: "天橋立 (Amanohashidate)",
+                        desc: "為何來此：日本三景之一，特殊的沙洲地形。",
+                        photo: "搭乘纜車從「傘松公園」由上往下拍 (著名的胯下窺視)",
+                        food: "智惠之餅 (當地名產)",
+                        type: "sight"
+                    },
+                    {
+                        name: "伊根舟屋",
+                        desc: "為何來此：浮在海面上的傳統房屋，如威尼斯般的水上小鎮。",
+                        photo: "搭乘遊覽船餵海鷗，拍攝舟屋群",
+                        food: "午餐通常包含在 Tour 中，或當地海鮮丼",
+                        type: "sight"
+                    }
+                ],
+                routeNote: "此日跟隨旅行團巴士，集合地點通常在京都車站八條口，請務必準時。",
+                mapLink: "https://www.google.com/maps/search/Kyoto+Station+Hachijoguchi"
+            },
+            {
+                day: 6,
+                date: "2026/4/3 (五)",
+                title: "背割堤 - 櫻花隧道絕景",
+                theme: "壯觀櫻花",
+                description: "前往京都與大阪交界，欣賞長達1.4公里的櫻花隧道，非常適合野餐漫步。",
+                spots: [
+                    {
+                        name: "淀川河川公園 背割堤",
+                        desc: "為何來此：這幾年最熱門的賞櫻點！整排吉野櫻形成無盡的粉紅隧道。",
+                        photo: "堤防盡頭回拍整個櫻花隧道",
+                        food: "建議在京都車站買好高級便當去野餐，現場只有輕食攤販",
+                        type: "sight"
+                    },
+                    {
+                        name: "石清水八幡宮 (選去)",
+                        desc: "為何來此：搭乘纜車上山，日本三大八幡宮之一。",
+                        photo: "山頂展望台眺望京都",
+                        food: "走井餅 (著名的紅豆麻糬)",
+                        type: "sight"
+                    }
+                ],
+                routeNote: "搭乘京阪電車到「石清水八幡宮站」，步行約10分鐘至背割堤。這天路比較平坦好走。",
+                mapLink: "https://www.google.com/maps/dir/Kyoto+Station/Sewaritei/Iwashimizu+Hachimangu/"
+            },
+            {
+                day: 7,
+                date: "2026/4/4 (六)",
+                title: "古都奈良 - 小鹿與大佛",
+                theme: "療癒動物",
+                description: "搭乘近鐵前往奈良，與可愛的小鹿互動，參拜壯觀的東大寺。",
+                spots: [
+                    {
+                        name: "奈良公園 & 興福寺",
+                        desc: "為何來此：隨處可見的野生梅花鹿。興福寺的五重塔是奈良地標。",
+                        photo: "與小鹿的合照 (注意手上仙貝)",
+                        food: "志津香釜飯 (排隊名店)、中谷堂 (現搗麻糬)",
+                        type: "sight"
+                    },
+                    {
+                        name: "東大寺 (Todai-ji)",
+                        desc: "為何來此：世界最大木造建築大佛殿，令人震撼。",
+                        photo: "大佛殿正面、大佛像",
+                        food: "柿葉壽司 (奈良名產)",
+                        type: "sight"
+                    },
+                    {
+                        name: "春日大社 (Kasuga Taisha)",
+                        desc: "為何來此：充滿靈氣的原始森林與萬盞燈籠。",
+                        photo: "參道上的石燈籠與小鹿",
+                        food: "春日荷茶屋 (萬葉粥)",
+                        type: "sight"
+                    }
+                ],
+                routeNote: "建議搭乘近鐵特急到「近鐵奈良站」。在當地可多利用「奈良交通巴士」減少步行。",
+                mapLink: "https://www.google.com/maps/dir/Kyoto+Station/Kintetsu-Nara+Station/Todai-ji/Kasuga+Taisha/"
+            },
+            {
+                day: 8,
+                date: "2026/4/5 (日)",
+                title: "伏見稻荷與宇治抹茶",
+                theme: "紅鳥居與綠茶",
+                description: "千本鳥居的視覺震撼，下午到宇治享受悠閒的茶香。",
+                spots: [
+                    {
+                        name: "伏見稻荷大社",
+                        desc: "為何來此：綿延不絕的紅色千本鳥居。建議走到「奧社」即可折返，不必攻頂。",
+                        photo: "千本鳥居內部 (陽光灑落時最美)",
+                        food: "參道上的稻荷壽司、烤鵪鶉",
+                        type: "sight"
+                    },
+                    {
+                        name: "宇治 平等院",
+                        desc: "為何來此：日幣10圓硬幣上的圖案，鳳凰堂極美。宇治川散步很舒適。",
+                        photo: "鳳凰堂正面倒影",
+                        food: "中村藤吉 (抹茶甜點)、伊藤久右衛門",
+                        type: "sight"
+                    }
+                ],
+                routeNote: "利用JR奈良線，先去稻荷，再去宇治，最後回京都。",
+                mapLink: "https://www.google.com/maps/dir/Kyoto+Station/Fushimi+Inari-taisha/Byodoin/Kyoto+Station/"
+            },
+            {
+                day: 9,
+                date: "2026/4/6 (一)",
+                title: "二條城與市區購物",
+                theme: "歷史與現代",
+                description: "參觀將軍的居所，下午在市區輕鬆購物或享用下午茶。",
+                spots: [
+                    {
+                        name: "二條城 (Nijo Castle)",
+                        desc: "為何來此：德川家康的離宮，著名的「二之丸御殿」與鴬聲地板。也有很棒的櫻花園。",
+                        photo: "唐門 (金碧輝煌)",
+                        food: "附近有許多京料理老店",
+                        type: "sight"
+                    },
+                    {
+                        name: "錦市場 & 四條河原町",
+                        desc: "為何來此：京都的廚房，採買伴手禮的好地方。高島屋、大丸百貨都在這。",
+                        photo: "錦天滿宮燈籠",
+                        food: "錦市場內小吃 (玉子燒、豆乳甜甜圈)",
+                        type: "shopping"
+                    },
+                    {
+                        name: "鴨川納涼床 (若有開放) 或 先斗町",
+                        desc: "為何來此：晚餐建議在先斗町的巷弄中尋找美食。",
+                        photo: "鴨川河岸與情侶",
+                        food: "壽喜燒 (三嶋亭) 或 懷石料理",
+                        type: "dinner"
+                    }
+                ],
+                routeNote: "市區內移動方便，搭地鐵或計程車皆可。",
+                mapLink: "https://www.google.com/maps/dir/Kyoto+Station/Nijo+Castle/Nishiki+Market/Pontocho+Park/"
+            },
+            {
+                day: 10,
+                date: "2026/4/7 (二)",
+                title: "告別京都 - 滿載而歸",
+                theme: "最後衝刺",
+                description: "在京都車站周邊做最後採買，前往機場。",
+                spots: [
+                    {
+                        name: "京都車站伊勢丹 / AEON Mall",
+                        desc: "把握最後時間購買伴手禮 (抹茶餅乾、漬物、日本酒)。",
+                        photo: "車站空中徑路",
+                        food: "車站拉麵小路 (各地拉麵集合)",
+                        type: "shopping"
+                    },
+                    {
+                        name: "前往關西機場",
+                        desc: "搭乘 HARUKA 列車前往機場。請務必提前3小時抵達機場。",
+                        photo: "再見京都",
+                        food: "最後的抹茶冰淇淋",
+                        type: "transport"
+                    }
+                ],
+                routeNote: "確認虎航航班時間，提早出發。",
+                mapLink: "https://www.google.com/maps/dir/Kyoto+Station/Kansai+International+Airport/"
+            }
+        ];
+
+        function App() {
+            const [activeDay, setActiveDay] = React.useState(0);
+
+            const DayCard = ({ data, isActive, onClick }) => (
+                <div 
+                    onClick={onClick}
+                    className={`cursor-pointer p-4 mb-4 rounded-xl border transition-all duration-300 ${isActive ? 'bg-pink-50 border-pink-400 shadow-lg transform scale-102' : 'bg-white border-gray-200 hover:border-pink-200'}`}
+                >
+                    <div className="flex justify-between items-center">
+                        <div>
+                            <span className="text-pink-600 font-bold text-sm">Day {data.day}</span>
+                            <h3 className="text-lg font-bold text-gray-800">{data.title}</h3>
+                            <p className="text-gray-500 text-sm">{data.date}</p>
+                        </div>
+                        {isActive ? <i className="fas fa-chevron-up text-pink-500"></i> : <i className="fas fa-chevron-down text-gray-400"></i>}
+                    </div>
+                    
+                    {isActive && (
+                        <div className="mt-4 border-t pt-4 border-pink-100">
+                            <p className="text-gray-700 mb-4 bg-white p-3 rounded-lg shadow-sm border-l-4 border-pink-400">
+                                <i className="fas fa-info-circle mr-2 text-pink-400"></i>{data.description}
+                            </p>
+                            
+                            <div className="space-y-4">
+                                {data.spots.map((spot, idx) => (
+                                    <div key={idx} className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                                        <div className="flex items-start">
+                                            <div className="mt-1 mr-3">
+                                                {spot.type === 'sight' && <i className="fas fa-camera text-blue-500"></i>}
+                                                {spot.type === 'food' && <i className="fas fa-utensils text-orange-500"></i>}
+                                                {spot.type === 'transport' && <i className="fas fa-train text-green-500"></i>}
+                                                {spot.type === 'shopping' && <i className="fas fa-shopping-bag text-purple-500"></i>}
+                                                {spot.type === 'walk' && <i className="fas fa-walking text-teal-500"></i>}
+                                                {spot.type === 'checkin' && <i className="fas fa-bed text-indigo-500"></i>}
+                                                {spot.type === 'dinner' && <i className="fas fa-wine-glass text-red-500"></i>}
+                                            </div>
+                                            <div>
+                                                <h4 className="font-bold text-gray-800 text-lg">{spot.name}</h4>
+                                                <p className="text-gray-600 text-sm mt-1">{spot.desc}</p>
+                                                <div className="mt-2 text-sm">
+                                                    <p className="text-blue-600"><i className="fas fa-camera-retro mr-1"></i>拍照: {spot.photo}</p>
+                                                    <p className="text-orange-600 mt-1"><i className="fas fa-utensils mr-1"></i>美食: {spot.food}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {data.routeNote && (
+                                <div className="mt-4 p-3 bg-yellow-50 text-yellow-800 rounded-lg text-sm flex items-start">
+                                    <i className="fas fa-lightbulb mt-1 mr-2"></i>
+                                    <span>{data.routeNote}</span>
+                                </div>
+                            )}
+
+                            <a 
+                                href={data.mapLink} 
+                                target="_blank" 
+                                className="mt-6 block w-full bg-pink-600 hover:bg-pink-700 text-white text-center font-bold py-3 px-4 rounded-full shadow-md transition duration-300 flex items-center justify-center"
+                            >
+                                <i className="fas fa-map-marked-alt mr-2"></i> 開啟 Google Maps 路線
+                            </a>
+                        </div>
+                    )}
+                </div>
+            );
+
+            return (
+                <div className="max-w-2xl mx-auto p-4 pb-20">
+                    <header className="text-center mb-8 pt-6">
+                        <div className="inline-block p-3 rounded-full bg-pink-100 mb-2">
+                            <i className="fas fa-sakura text-pink-500 text-3xl"></i>
+                        </div>
+                        <h1 className="text-3xl font-bold text-gray-800">京都賞櫻慢活之旅</h1>
+                        <p className="text-gray-600 mt-2">四人同行 輕鬆自在</p>
+                        <p className="text-pink-600 font-semibold mt-1">2026/3/29 - 4/7</p>
+                    </header>
+
+                    <div className="sticky top-0 z-10 bg-[#fdf2f8]/95 backdrop-blur-sm py-2 mb-4 overflow-x-auto whitespace-nowrap hide-scrollbar border-b border-pink-200">
+                         {itineraryData.map((d, idx) => (
+                            <button 
+                                key={idx}
+                                onClick={() => setActiveDay(idx)}
+                                className={`inline-block px-4 py-2 mx-1 rounded-full text-sm font-bold transition-colors ${activeDay === idx ? 'bg-pink-600 text-white shadow-md' : 'bg-white text-gray-600 hover:bg-pink-100'}`}
+                            >
+                                D{d.day}
+                            </button>
+                        ))}
+                    </div>
+
+                    <div>
+                        {itineraryData.map((day, idx) => (
+                            <DayCard 
+                                key={idx} 
+                                data={day} 
+                                isActive={activeDay === idx} 
+                                onClick={() => setActiveDay(idx)}
+                            />
+                        ))}
+                    </div>
+                    
+                    <footer className="text-center text-gray-400 text-sm mt-10 mb-6">
+                        <p>© 2026 京都旅遊規劃助理</p>
+                        <p className="text-xs mt-1">點擊 Google Maps 按鈕可直接導航</p>
+                    </footer>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
